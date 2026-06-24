@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cryptpad:
+    image: cryptpad/cryptpad:latest
+    container_name: cryptpad
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ./data/blob:/cryptpad/blob
+      - ./data/block:/cryptpad/block
+      - ./data/customize:/cryptpad/customize
+      - ./data/data:/cryptpad/data
+      - ./data/datastore:/cryptpad/datastore
+      - ./config/config.js:/cryptpad/config/config.js
+    environment:
+      - CPAD_MAIN_DOMAIN=https://cryptpad.example.com
+      - CPAD_SANDBOX_DOMAIN=https://cryptpad-sandbox.example.com

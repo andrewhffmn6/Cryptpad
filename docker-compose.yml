@@ -30,4 +30,5 @@ volumes:
 
 configs:
   cryptpad_config:
+    name: cryptpad_config_v2
     external: true

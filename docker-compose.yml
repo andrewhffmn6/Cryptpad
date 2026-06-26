@@ -7,9 +7,9 @@ services:
     restart: unless-stopped
     ports:
       - "8300:3000"
-    environment:
-      - CPAD_MAIN_DOMAIN=http://chadig-02.staging.chattanooga.digital:8300
-      - CPAD_CONF_UNSAFE_ORIGIN=http://chadig-02.staging.chattanooga.digital:8300
+environment:
+      - CPAD_MAIN_DOMAIN=http://10.0.10.10:8300
+      - CPAD_CONF_UNSAFE_ORIGIN=http://10.0.10.10:8300
       - CPAD_CONF=true
     volumes:
       - cryptpad_stable_config:/cryptpad/config

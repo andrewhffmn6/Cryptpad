@@ -4,6 +4,7 @@ services:
   cryptpad:
     image: cryptpad/cryptpad:latest
     container_name: cryptpad
+    user: "root"
     restart: unless-stopped
     ports:
       - "8300:3000"

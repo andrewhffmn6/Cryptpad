@@ -6,15 +6,21 @@ services:
     container_name: cryptpad
     restart: unless-stopped
     ports:
-      - "3000:3000"
-      - "3001:3001"
+      - "8300:3000"
+      - "8301:3001"
     volumes:
-      - ./data/blob:/cryptpad/blob
-      - ./data/block:/cryptpad/block
-      - ./data/customize:/cryptpad/customize
-      - ./data/data:/cryptpad/data
-      - ./data/datastore:/cryptpad/datastore
-      - ./config/config.js:/cryptpad/config/config.js
+      - cryptpad_blob:/cryptpad/blob
+      - cryptpad_block:/cryptpad/block
+      - cryptpad_customize:/cryptpad/customize
+      - cryptpad_data:/cryptpad/data
+      - cryptpad_datastore:/cryptpad/datastore
     environment:
       - CPAD_MAIN_DOMAIN=https://cryptpad.example.com
       - CPAD_SANDBOX_DOMAIN=https://cryptpad-sandbox.example.com
+
+volumes:
+  cryptpad_blob:
+  cryptpad_block:
+  cryptpad_customize:
+  cryptpad_data:
+  cryptpad_datastore:

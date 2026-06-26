@@ -4,7 +4,6 @@ services:
   cryptpad:
     image: cryptpad/cryptpad:latest
     container_name: cryptpad
-    user: "root"
     restart: unless-stopped
     ports:
       - "8300:3000"
@@ -12,5 +11,13 @@ services:
       - CPAD_MAIN_DOMAIN=http://chadig-02.staging.chattanooga.digital:8300
       - CPAD_CONF_UNSAFE_ORIGIN=http://chadig-02.staging.chattanooga.digital:8300
     volumes:
-      - /var/lib/docker/volumes/cryptpad_final_config/_data:/cryptpad/config
-      - /var/lib/docker/volumes/cryptpad_final_data/_data:/cryptpad/data
+      - type: bind
+        source: /var/lib/docker/volumes/cryptpad_final_config/_data
+        target: /cryptpad/config
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /var/lib/docker/volumes/cryptpad_final_data/_data
+        target: /cryptpad/data
+        bind:
+          create_host_path: true

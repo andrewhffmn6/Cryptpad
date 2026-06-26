@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     ports:
       - "8300:3000"
-environment:
+    environment:
       - CPAD_MAIN_DOMAIN=http://10.0.10.10:8300
       - CPAD_CONF_UNSAFE_ORIGIN=http://10.0.10.10:8300
       - CPAD_CONF=true

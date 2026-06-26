@@ -14,12 +14,11 @@ services:
       - cryptpad_customize:/cryptpad/customize
       - cryptpad_data:/cryptpad/data
       - cryptpad_datastore:/cryptpad/datastore
-    configs:
-      - source: cryptpad_config
-        target: /cryptpad/config/config.js
     environment:
       - CPAD_MAIN_DOMAIN=http://localhost:8300
       - CPAD_SANDBOX_DOMAIN=http://localhost:8301
+      - CPAD_CONF_UNSAFE_ORIGIN=http://localhost:8300
+      - CPAD_CONF_SAFE_ORIGIN=http://localhost:8301
 
 volumes:
   cryptpad_blob:
@@ -27,8 +26,3 @@ volumes:
   cryptpad_customize:
   cryptpad_data:
   cryptpad_datastore:
-
-configs:
-  cryptpad_config:
-    name: cryptpad_config_v2
-    external: true

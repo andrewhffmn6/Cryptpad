@@ -11,13 +11,9 @@ services:
       - CPAD_MAIN_DOMAIN=http://chadig-02.staging.chattanooga.digital:8300
       - CPAD_CONF_UNSAFE_ORIGIN=http://chadig-02.staging.chattanooga.digital:8300
     volumes:
-      - type: bind
-        source: /var/lib/docker/volumes/cryptpad_final_config/_data
-        target: /cryptpad/config
-        bind:
-          create_host_path: true
-      - type: bind
-        source: /var/lib/docker/volumes/cryptpad_final_data/_data
-        target: /cryptpad/data
-        bind:
-          create_host_path: true
+      - cryptpad_single_config:/cryptpad/config
+      - cryptpad_single_data:/cryptpad/data
+
+volumes:
+  cryptpad_single_config:
+  cryptpad_single_data:

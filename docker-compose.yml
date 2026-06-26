@@ -11,7 +11,9 @@ services:
       - CPAD_MAIN_DOMAIN=http://localhost:8300
       - CPAD_CONF_UNSAFE_ORIGIN=http://localhost:8300
     volumes:
+      - cryptpad_config:/cryptpad/config
       - cryptpad_data:/cryptpad/data
 
 volumes:
+  cryptpad_config:
   cryptpad_data:
